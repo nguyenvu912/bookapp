@@ -111,13 +111,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
                   const SizedBox(width: 24),
-                  GestureDetector(
-                    onTap: () {},
-                    child: FaIcon(
-                      FontAwesomeIcons.bell,
-                      color: AppColors.main,
-                    ),
-                  )
+                  // GestureDetector(
+                  //   onTap: () {},
+                  //   child: FaIcon(
+                  //     FontAwesomeIcons.bell,
+                  //     color: AppColors.main,
+                  //   ),
+                  // )
                 ],
               ),
             ],

@@ -3,27 +3,29 @@ import 'package:flutter_base/app/constant/app_colors.dart';
 import 'package:flutter_base/app/constant/app_text_styles.dart';
 
 class AppTextField extends StatelessWidget {
-  final String labelText;
   final String hintText;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
   final FormFieldValidator<String>? validator;
   final TextInputType keyboardType;
   final FormFieldSetter<String>? onSaved;
-  final bool? isRequire;
-  final bool? enable;
-  final TextStyle? labelStyle;
+
+  final bool enable;
+  final int? maxLength;
+  final ValueChanged<String>? onFieldSubmitted;
+
   final AutovalidateMode? autoValidateMode;
   final String? initialValue;
   final bool? obscureText;
   final Widget? suffixIcon;
-  final int? maxLength;
-  final int? maxLines;
+  final bool? readOnly;
+  final VoidCallback? onTap;
 
-  const AppTextField(
+  final Color? disableColor;
+
+  AppTextField(
       {Key? key,
       this.initialValue,
-      this.labelText = '',
       this.hintText = '',
       this.controller,
       this.onChanged,
@@ -31,26 +33,33 @@ class AppTextField extends StatelessWidget {
       this.autoValidateMode,
       this.validator,
       this.onSaved,
-      this.isRequire,
-      this.labelStyle,
-      this.enable,
+      this.enable = true,
       this.obscureText = false,
       this.suffixIcon,
+      this.readOnly,
+      this.onTap,
+      this.disableColor,
       this.maxLength,
-      this.maxLines})
+      this.onFieldSubmitted})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: onFieldSubmitted,
+      maxLength: maxLength,
+      onTap: onTap,
+      readOnly: readOnly ?? false,
       obscureText: obscureText!,
       obscuringCharacter: "*",
       enabled: enable,
-      maxLength: maxLength,
       controller: controller,
       decoration: InputDecoration(
+        counter: Offstage(),
+        filled: enable ? null : true,
+        fillColor: enable ? null : disableColor ?? AppColors.greyD8,
         contentPadding: const EdgeInsets.only(
-          left: 13,
+          left: 5,
           right: 15,
           top: 13,
           bottom: 13,
@@ -59,12 +68,16 @@ class AppTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: Colors.red),
         ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.red),
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: AppColors.greyD8),
         ),
         disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.main),
+            borderSide: BorderSide(color: AppColors.greyD8),
             borderRadius: BorderRadius.circular(8)),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.greyD8),
@@ -72,10 +85,7 @@ class AppTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.main),
             borderRadius: BorderRadius.circular(8)),
-        // focusedErrorBorder: OutlineInputBorder(
-        //   // borderRadius: BorderRadius.circular(10),
-        //   borderSide: BorderSide(color: AppColors.lineGray),
-        // ),
+        errorStyle: AppTextStyle.errorText(14),
         hintText: hintText,
         hintStyle: AppTextStyle.hintText(14, weight: FontWeight.normal),
         suffixIcon: suffixIcon != null
