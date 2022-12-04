@@ -42,9 +42,9 @@ class _InformationPageState extends State<InformationPage> {
 
     _cubit = BlocProvider.of<InformationCubit>(context);
 
-    if (widget.user.dob != null || widget.user.dob.toString().isNotEmpty) {
-      // _cubit.disableBirthdayField();
-    }
+    // if (widget.user.dob != null || widget.user.dob.toString().isNotEmpty) {
+    //   // _cubit.disableBirthdayField();
+    // }
 
     // _cubit.changeName(fullNameController.text);
     // _cubit.changeEmail(emailController.text);
