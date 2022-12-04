@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: AppTextStyle.grey(14).copyWith(color: Colors.red))
                 ])),
                 const SizedBox(height: 8),
-                const AppTextField(
+                AppTextField(
                   hintText: 'Nhập họ tên của bạn...',
                   maxLength: 100,
                   // controller: nameController,
@@ -81,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: AppTextStyle.grey(14).copyWith(color: Colors.red))
                 ])),
                 const SizedBox(height: 8),
-                const AppTextField(
+                AppTextField(
                   hintText: 'Nhập tài khoản của bạn...',
                   maxLength: 100,
                   // controller: nameController,
@@ -102,7 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: AppTextStyle.grey(14).copyWith(color: Colors.red))
                 ])),
                 const SizedBox(height: 8),
-                const AppTextField(
+                AppTextField(
                   hintText: 'Nhập mật khẩu của bạn...',
                   maxLength: 100,
                   // controller: nameController,
@@ -124,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: AppTextStyle.grey(14).copyWith(color: Colors.red))
                 ])),
                 const SizedBox(height: 8),
-                const AppTextField(
+                AppTextField(
                   hintText: 'Xác nhận mật khẩu của bạn...',
                   maxLength: 100,
                   // controller: nameController,

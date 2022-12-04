@@ -148,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
             // _buildTextLabel('Vai trò'),
             // _buildRoleOption(),
             SizedBox(height: 5),
-            _buildTextForgotPass(),
+            // _buildTextForgotPass(),
             _buildSignButton(),
             SizedBox(height: 40),
             _buildTextRegistry(),
@@ -218,27 +218,27 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 
-  Widget _buildTextForgotPass() {
-    return GestureDetector(
-      onTap: () => {
-        Application.router!.navigateTo(
-          context,
-          Routes.forgotPassword,
-        )
-      },
-      child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-        Text(S.of(context).signIn_forgotPassword,
-            style: TextStyle(
-              fontSize: 11,
-              color: Color(0xFF7A7A7A),
-              fontStyle: FontStyle.italic,
-            )),
-        SizedBox(
-          width: 30,
-        )
-      ]),
-    );
-  }
+  // Widget _buildTextForgotPass() {
+  //   return GestureDetector(
+  //     onTap: () => {
+  //       Application.router!.navigateTo(
+  //         context,
+  //         Routes.forgotPassword,
+  //       )
+  //     },
+  //     child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+  //       Text(S.of(context).signIn_forgotPassword,
+  //           style: TextStyle(
+  //             fontSize: 11,
+  //             color: Color(0xFF7A7A7A),
+  //             fontStyle: FontStyle.italic,
+  //           )),
+  //       SizedBox(
+  //         width: 30,
+  //       )
+  //     ]),
+  //   );
+  // }
 
   Widget _buildTextRegistry() {
     return GestureDetector(

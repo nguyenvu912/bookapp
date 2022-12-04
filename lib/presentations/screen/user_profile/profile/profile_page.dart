@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/app/constant/constant_barrel.dart';
+import 'package:flutter_base/presentations/router/routers.dart';
 import 'package:flutter_base/presentations/screen/user_profile/profile/widget/header_widget.dart';
 import 'package:flutter_base/presentations/screen/user_profile/profile/widget/menu_item_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,7 +36,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: AppColors.main,
                         size: 16,
                       ),
-                      onTap: () {}),
+                      onTap: () {
+                        Application.router!
+                            .navigateTo(context, Routes.information);
+                      }),
                   MenuItemWidget(
                       title: "Mật khẩu",
                       icon: FaIcon(

@@ -9,19 +9,24 @@ import 'package:flutter_base/presentations/router/router_handler/root_handler.da
 part 'application.dart';
 
 class Routes {
+  //Root
   static String root = "/";
 
+  //Login and Register
   static String login = "/login";
-  static String changePassword = "/changePassword";
-  static String forgotPassword = "/forgotPassword";
   static String registry = "/registry";
 
+  //Home
   static String home = "/home";
 
+  //Book
   static String pushBook = "/pushBook";
 
+  //User Profile
   static String profile = "/profile";
+  static String information = "/information";
 
+  //Forum
   static String forum = "/forum";
 
   static void configureRoutes(FluroRouter router) {
@@ -32,39 +37,39 @@ class Routes {
       handler: splashHandler,
       transitionType: TransitionType.native,
     );
+
+    //Login & Register
     router.define(
       login,
       handler: loginHandler,
       transitionType: TransitionType.native,
     );
-    // router.define(
-    //   changePassword,
-    //   handler: changePasswordHandler,
-    //   transitionType: TransitionType.fadeIn,
-    // );
-    // router.define(
-    //   forgotPassword,
-    //   handler: forgotPasswordHandler,
-    //   transitionType: TransitionType.fadeIn,
-    // );
+
     router.define(
       registry,
       handler: registryHandler,
       transitionType: TransitionType.fadeIn,
     );
 
+    //Home
     router.define(
       home,
       handler: homeHandler,
       transitionType: TransitionType.native,
     );
 
+    //Profile
     router.define(profile,
         handler: profileHandler, transitionType: TransitionType.native);
 
+    router.define(information,
+        handler: informationHandler, transitionType: TransitionType.native);
+
+    //Book
     router.define(pushBook,
         handler: pushBookHandler, transitionType: TransitionType.native);
 
+    //Forum
     router.define(forum,
         handler: forumHandler, transitionType: TransitionType.native);
   }
