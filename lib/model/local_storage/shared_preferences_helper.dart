@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_base/model/entity/token/token_entity.dart';
+import 'package:flutter_base/model/entity/response/login_response.dart';
 import 'package:flutter_base/utils/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../entity/user/user_entity.dart';
 
 class SharedPreferencesHelper {
   static const _authTokenKey = '_authTokenKey';
@@ -13,7 +11,7 @@ class SharedPreferencesHelper {
   static const _longitude = '_longitude';
   static const _latitude = '_latitude';
 
-  static Future<void> setToken(TokenEntity token) async {
+  static Future<void> setToken(LoginResponse token) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString(_authTokenKey, jsonEncode(token.toJson()));
@@ -22,7 +20,7 @@ class SharedPreferencesHelper {
     }
   }
 
-  static Future<TokenEntity?> getToken() async {
+  static Future<LoginResponse?> getToken() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? tokenJson = prefs.getString(_authTokenKey);
@@ -30,7 +28,7 @@ class SharedPreferencesHelper {
       if (tokenJson == null)
         return null;
       else
-        return TokenEntity.fromJson(jsonDecode(tokenJson));
+        return LoginResponse.fromJson(jsonDecode(tokenJson));
     } catch (e) {
       return null;
     }
@@ -45,7 +43,7 @@ class SharedPreferencesHelper {
     }
   }
 
-  static void setUserInfo(UserEntity user) async {
+  static void setUserInfo(LoginResponse user) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString(_userInfoKey, json.encode(user.toJson()));
@@ -54,11 +52,11 @@ class SharedPreferencesHelper {
     }
   }
 
-  static Future<UserEntity?> getUserInfo() async {
+  static Future<LoginResponse?> getUserInfo() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var value = prefs.getString(_userInfoKey);
-      return UserEntity.fromJson(json.decode(value!));
+      return LoginResponse.fromJson(json.decode(value!));
     } catch (e) {
       return null;
     }

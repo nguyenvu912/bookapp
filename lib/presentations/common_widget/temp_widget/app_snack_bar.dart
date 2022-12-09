@@ -69,11 +69,7 @@ class AppSnackBar {
             onTap: () {
               appNavigatorKey.currentState!.maybePop();
             },
-            child: SizedBox(
-              width: 15,
-              height: 15,
-              child: FaIcon(FontAwesomeIcons.circleXmark),
-            ),
+            child: SizedBox(),
           )
         ],
       ),

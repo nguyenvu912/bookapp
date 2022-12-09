@@ -6292,11 +6292,11 @@ class S {
     );
   }
 
-  /// `Tên đăng nhập`
-  String get signIn_Username {
+  /// `Email`
+  String get signIn_Email {
     return Intl.message(
-      'Tên đăng nhập',
-      name: 'signIn_Username',
+      'Email',
+      name: 'signIn_Email',
       desc: '',
       args: [],
     );

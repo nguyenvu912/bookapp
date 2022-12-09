@@ -1,4 +1,4 @@
-import 'package:flutter_base/model/entity/user/user_entity.dart';
+import 'package:flutter_base/model/entity/response/login_response.dart';
 
 class GlobalData {
   GlobalData._privateConstructor();
@@ -6,6 +6,5 @@ class GlobalData {
   static final GlobalData instance = GlobalData._privateConstructor();
 
   String? token;
-  String? role;
-  UserEntity? userEntity;
+  UserEntity? userInfo;
 }

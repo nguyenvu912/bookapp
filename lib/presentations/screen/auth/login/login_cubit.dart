@@ -1,34 +1,53 @@
+import 'package:flutter_base/app/app_data.dart';
+import 'package:flutter_base/model/entity/request/login_request.dart';
+import 'package:flutter_base/model/entity/response/login_response.dart';
 import 'package:flutter_base/model/enum/load_status.dart';
 import 'package:flutter_base/model/repository/auth_repository.dart';
+import 'package:flutter_base/presentations/common_widget/temp_widget/app_snack_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxdart/subjects.dart';
 import 'package:equatable/equatable.dart';
 
 part 'login_state.dart';
-
-enum LoginNavigator {
-  OPEN_HOME,
-}
 
 class LoginCubit extends Cubit<LoginState> {
   AuthRepository? repository;
   LoginCubit({this.repository}) : super(LoginState());
 
-  final navigatorController = PublishSubject<LoginNavigator>();
-
   @override
   Future<void> close() {
-    navigatorController.close();
-    // showMessageController.close();
     return super.close();
   }
 
-  void clearInformation() {
-    emit(state.copyWith(username: "", password: ""));
+  void requestLogin(String email, String password) async {
+    emit(state.copyWith(loadStatus: LoadStatus.LOADING));
+    try {
+      final result = await repository!
+          .login(LoginRequest(email: email, password: password));
+
+      if (result.messageCode == 200) {
+        emit(state.copyWith(loadStatus: LoadStatus.SUCCESS));
+        GlobalData.instance.token = result.data!.token;
+        GlobalData.instance.userInfo = result.data!.user;
+      } else if (result.messageCode == 400) {
+        emit(state.copyWith(
+            loadStatus: LoadStatus.FAILURE, errorMessage: result.message));
+        AppSnackBar.showError(state.errorMessage);
+      } else {
+        emit(state.copyWith(
+            loadStatus: LoadStatus.FAILURE, errorMessage: result.message));
+      }
+    } catch (e) {
+      emit(state.copyWith(loadStatus: LoadStatus.FAILURE));
+    }
+    ;
   }
 
-  void usernameChange(String username) {
-    emit(state.copyWith(username: username));
+  void clearInformation() {
+    emit(state.copyWith(email: '', password: ''));
+  }
+
+  void emailChange(String email) {
+    emit(state.copyWith(email: email));
   }
 
   void passChange(String pass) {

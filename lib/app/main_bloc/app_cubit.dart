@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_base/app/app_data.dart';
 import 'package:flutter_base/model/enum/load_status.dart';
 import 'package:flutter_base/model/repository/auth_repository.dart';
 
@@ -15,11 +14,6 @@ class AppCubit extends Cubit<AppState> {
 
   void getData() async {
     // await LoadJsonHelper.shared.load();
-  }
-
-  void removeUserSection() {
-    authRepository.removeToken();
-    GlobalData.instance.token = null;
   }
 
   // void getProfile() async {

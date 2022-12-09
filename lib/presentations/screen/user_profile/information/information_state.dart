@@ -2,7 +2,7 @@ part of 'information_cubit.dart';
 
 class InformationState extends Equatable {
   final LoadStatus? updateProfileStatus;
-  final UserEntity? updateProfileResponse;
+  final LoginResponse? updateProfileResponse;
   final String? fullName;
   final int? gender;
   final String? email;
@@ -38,7 +38,7 @@ class InformationState extends Equatable {
 
   InformationState copyWith({
     LoadStatus? updateProfileStatus,
-    UserEntity? updateProfileResponse,
+    LoginResponse? updateProfileResponse,
     String? fullName,
     String? firstName,
     String? lastname,

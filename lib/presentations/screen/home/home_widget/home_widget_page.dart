@@ -1,15 +1,12 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_base/app/constant/constant_barrel.dart';
 import 'package:flutter_base/app/main_bloc/app_cubit.dart';
-import 'package:flutter_base/model/enum/load_status.dart';
 import 'package:flutter_base/presentations/common_widget/temp_widget/app_cache_image.dart';
-import 'package:flutter_base/presentations/common_widget/temp_widget/app_shimmer.dart';
 import 'package:flutter_base/presentations/screen/home/home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:flutter_base/app/app_data.dart';
 
 class HomePageWidget extends StatefulWidget {
   final PageController pageController;
@@ -29,9 +26,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   late AppCubit appCubit;
   late HomeCubit homeCubit;
+  final userInfo = GlobalData.instance.userInfo;
 
   @override
   void initState() {
+    print("userInfo ===========> ${userInfo!.name}");
     super.initState();
     homeCubit = BlocProvider.of<HomeCubit>(context);
     appCubit = BlocProvider.of<AppCubit>(context);
@@ -93,7 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         style: AppTextStyle.grey(12, weight: FontWeight.w400),
                       ),
                       Text(
-                        'Nguyen Huy Vu',
+                        "${userInfo!.name}",
                         style: AppTextStyle.black(14, weight: FontWeight.w700),
                       ),
                     ],
