@@ -24,14 +24,12 @@ class SplashCubit extends Cubit<SplashState> {
 
   void fetchInitialData() async {
     String? token = (await SharedPreferencesHelper.getToken()) as String?;
-    LoginResponse? userInfo = await SharedPreferencesHelper.getUserInfo();
 
     ///Check login and fetch profile
     if (token == null || token == "") {
       navigatorController.sink.add(SplashNavigator.OPEN_LOGIN);
     } else {
       GlobalData.instance.token = token;
-      GlobalData.instance.userEntity = userInfo;
       navigatorController.sink.add(SplashNavigator.OPEN_HOME);
     }
   }

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_base/app/app_data.dart';
-import 'package:flutter_base/app/language/generated/intl/messages_en.dart';
 import 'package:flutter_base/model/entity/request/login_request.dart';
 import 'package:flutter_base/model/entity/response/login_response.dart';
 import 'package:flutter_base/model/enum/load_status.dart';
@@ -29,6 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
       if (result.messageCode == 200) {
         emit(state.copyWith(loadStatus: LoadStatus.SUCCESS));
         GlobalData.instance.token = result.data!.token;
+        GlobalData.instance.userInfo = result.data!.user;
       } else if (result.messageCode == 400) {
         emit(state.copyWith(
             loadStatus: LoadStatus.FAILURE, errorMessage: result.message));

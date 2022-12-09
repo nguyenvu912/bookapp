@@ -6,6 +6,5 @@ class GlobalData {
   static final GlobalData instance = GlobalData._privateConstructor();
 
   String? token;
-  String? role;
-  LoginResponse? userEntity;
+  UserEntity? userInfo;
 }

@@ -11,6 +11,9 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
 
+  ///Login
   @POST("/user/login")
   Future<ObjectResponse<LoginResponse>> login(@Body() LoginRequest body);
+
+  ///Home
 }
