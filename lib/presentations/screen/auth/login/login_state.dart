@@ -2,27 +2,40 @@ part of 'login_cubit.dart';
 
 class LoginState extends Equatable {
   final LoadStatus? loadStatus;
-  final String? username;
+  final LoginResponse? user;
+  final String? email;
   final String? password;
+  final String? errorMessage;
 
-  LoginState({this.loadStatus, this.username, this.password});
+  LoginState(
+      {this.loadStatus,
+      this.user,
+      this.email,
+      this.password,
+      this.errorMessage});
 
   LoginState copyWith({
     LoadStatus? loadStatus,
-    String? username,
+    LoginResponse? user,
+    String? email,
     String? password,
+    String? errorMessage,
   }) {
     return new LoginState(
       loadStatus: loadStatus ?? this.loadStatus,
-      username: username ?? this.username,
+      user: user ?? this.user,
       password: password ?? this.password,
+      email: email ?? this.email,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
   @override
   List<Object?> get props => [
         this.loadStatus,
-        this.username,
+        this.user,
+        this.email,
         this.password,
+        this.errorMessage
       ];
 }

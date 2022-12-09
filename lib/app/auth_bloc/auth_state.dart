@@ -10,24 +10,18 @@ class Uninitialized extends AuthState {
 }
 
 class Authenticated extends AuthState {
-  final TokenEntity currentToken;
-  final UserEntity currentUser;
+  final String? token;
+  final LoginResponse? user;
   @override
-  List<Object> get props => [currentToken, currentUser];
+  List<Object?> get props => [token, user];
 
-  const Authenticated({
-    required this.currentToken,
-    required this.currentUser,
-  });
+  const Authenticated({this.user, this.token});
 
   Authenticated copyWith({
-    TokenEntity? currentToken,
-    UserEntity? currentUser,
+    LoginResponse? user,
+    String? token,
   }) {
-    return Authenticated(
-      currentToken: currentToken ?? this.currentToken,
-      currentUser: currentUser ?? this.currentUser,
-    );
+    return Authenticated(user: user ?? this.user, token: token ?? this.token);
   }
 }
 

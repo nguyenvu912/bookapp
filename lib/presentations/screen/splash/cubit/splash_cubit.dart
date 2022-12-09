@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_base/app/app_data.dart';
-import 'package:flutter_base/model/entity/user/user_entity.dart';
+import 'package:flutter_base/model/entity/request/login_request.dart';
+import 'package:flutter_base/model/entity/response/login_response.dart';
 import 'package:flutter_base/model/local_storage/shared_preferences_helper.dart';
 import 'package:flutter_base/model/repository/auth_repository.dart';
 
@@ -23,14 +24,14 @@ class SplashCubit extends Cubit<SplashState> {
 
   void fetchInitialData() async {
     String? token = (await SharedPreferencesHelper.getToken()) as String?;
-    UserEntity? _userInfo = await SharedPreferencesHelper.getUserInfo();
+    LoginResponse? userInfo = await SharedPreferencesHelper.getUserInfo();
 
     ///Check login and fetch profile
     if (token == null || token == "") {
       navigatorController.sink.add(SplashNavigator.OPEN_LOGIN);
     } else {
       GlobalData.instance.token = token;
-      GlobalData.instance.userEntity = _userInfo;
+      GlobalData.instance.userEntity = userInfo;
       navigatorController.sink.add(SplashNavigator.OPEN_HOME);
     }
   }

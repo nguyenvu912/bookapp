@@ -4,15 +4,9 @@ part 'object_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
 class ObjectResponse<T> {
-  @JsonKey(defaultValue: '')
-  final String status;
-  @JsonKey()
+  final String? message;
+  final int? messageCode;
   final T? data;
-
-  ObjectResponse({
-    this.status = '',
-    this.data,
-  });
 
   factory ObjectResponse.fromJson(
           Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>
@@ -20,4 +14,10 @@ class ObjectResponse<T> {
 
   Map<String, dynamic> toJson(Object? Function(T value) toJsonT) =>
       _$ObjectResponseToJson(this, toJsonT);
+
+  const ObjectResponse({
+    this.message,
+    this.messageCode,
+    this.data,
+  });
 }

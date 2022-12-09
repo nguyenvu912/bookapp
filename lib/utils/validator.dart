@@ -20,8 +20,8 @@ class Validator {
       return false;
     }
     return RegExp(
-            r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-{}:]).{8,100}$")
-        .hasMatch(password);
+        // r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-{}:]).{8,100}$"
+        r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").hasMatch(password);
   }
 
   static bool validate0to9Character(String string) {

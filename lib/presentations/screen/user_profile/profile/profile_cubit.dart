@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/app/constant/constant_barrel.dart';
-import 'package:flutter_base/model/entity/user/user_entity.dart';
+import 'package:flutter_base/model/entity/response/login_response.dart';
 import 'package:flutter_base/model/enum/load_status.dart';
 import 'package:flutter_base/model/repository/auth_repository.dart';
 import 'package:flutter_base/model/repository/profile_repository.dart';
@@ -79,7 +80,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(state.copyWith(
           changeAvatarStatus: ChangeAvatarStatus.success,
           base64avatar: base64Image,
-          user: state.user?.copyWith(avatarUrl: '')));
+          user: state.user?.copyWith()));
     } catch (e) {
       print(e);
       emit(state.copyWith(
@@ -88,8 +89,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  void init(UserEntity user) {
-    emit(state.copyWith(user: user));
+  void init(Response user) {
+    emit(state.copyWith());
   }
 
   void isFirstTimeIssue(bool? isFirstTimeIssue) {

@@ -12,7 +12,7 @@ class AppConfig {
   // // STAGING
   // static const baseUrl = "http://139.59.192.86:8080/v1"; //Stagging
 
-  static const baseUrl = "https://bagri.v-chain.vn/api/v1";
+  static const baseUrl = "https://bookshare-4f1t.onrender.com";
   static const weatherUrl = "https://api.openweathermap.org/data/2.5";
   static const apiKey = "6ce1aec7e60fff1aedf3891c3354007c";
   static const fileUrl = "http://143.198.84.186:8081";

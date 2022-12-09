@@ -4,7 +4,7 @@ enum ChangeAvatarStatus { permissionDenied, loading, success, failure, cancel }
 
 class ProfileState extends Equatable {
   LoadStatus? loadStatus;
-  UserEntity? user;
+  LoginResponse? user;
 
   final LoadStatus? logoutRequestStatus;
 
@@ -36,7 +36,7 @@ class ProfileState extends Equatable {
 
   ProfileState copyWith({
     LoadStatus? loadStatus,
-    UserEntity? user,
+    LoginResponse? user,
     LoadStatus? logoutRequestStatus,
     String? base64avatar,
     ChangeAvatarStatus? changeAvatarStatus,

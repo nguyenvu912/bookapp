@@ -121,13 +121,6 @@ class _MyAppState extends State<MyApp> {
         RepositoryProvider<AuthRepository>(create: (context) {
           return AuthRepositoryImpl(_apiClient);
         }),
-
-        // RepositoryProvider<UploadRepository>(create: (context) {
-        //   return UploadRepositoryImpl(_apiClient);
-        // }),
-        // RepositoryProvider<GlobalDataRepository>(create: (context) {
-        //   return GlobalDataRepositoryImpl(_apiClient);
-        // }),
       ],
       child: MultiBlocProvider(
         providers: [
